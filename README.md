@@ -9,7 +9,7 @@ The Risky Plays Calculator (RPC) accepts a string of comma-delimited commands th
 > **Example input:** `2+, 6+r1, 2b(4)`
 
 ## D6 rolls
-Normal rolls on a d6 are the simplest, so they have the simplest syntax: `n+,` where `n` is the target number.
+Normal rolls on a d6 have the syntax `n+,` where `n` is the target number.
 
 > **Example:** For a 4+ dodge followed by a 3+ dodge, the syntax is `2+, 3+`.
 
