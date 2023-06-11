@@ -38,6 +38,7 @@ The syntax for a block action consists of the number of block dice to roll, the 
 ## Acceptable outcomes
 To determine the number of acceptable outcomes, add up the values from this chart:
 
+|Result|Value|
 |-|-|
 | Defender Down ("Pow"): | 1 |
 | Defender Stumbles | 1 |
