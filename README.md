@@ -10,7 +10,7 @@ The input is pure text, and the output is one or more tables of action sequences
 ## The Basics
 Input consists of a series of comma-delimited commands that represent a sequence of actions by a player, terminated with a semicolon.
 
-### Single player
+### Single player sequence
 An example input could look like this:
 ```
 dodge 4+, sure hands 2+, "rush" 2+, 2block4;
@@ -18,7 +18,7 @@ dodge 4+, sure hands 2+, "rush" 2+, 2block4;
 > In this example, one player tries dodging out with the Dodge skill on a 4+, picking up the ball with Sure Hands on a 2+, making a 2+ roll on a Rush and Blitzing with two dice and getting either defender down, defender stumbles or a push.*
 
 ### Multiple players
-To input actions from multiple players, replace the comma separator with a semicolon:
+To input actions from multiple players, replace the comma separator with a semicolon for each new player:
 ```
 dodge 4+, sure hands 2+, 2+, 2block4;
 dodge 3+, dodge 3+;
@@ -28,7 +28,7 @@ dodge 3+, dodge 3+;
 > In this example, the actions on each line are done by four different players. The first player tries to perform the same sequence as before. Then the second player attempts two consecutive 3+ dodges with the Dodge skill. The third player then attempts a 4+ dodge and two rushes with Sure Feet. Finally, the fourth player does the same as the third.
 
 ### Short-hand and grouping
-There are short-form synomyms for every action, and you can group multiple identical actions together. The code from the previous example could be written much more succinctly as:
+There are short-form synomyms for every action, and you can group multiple identical actions together. An advanced user might choose to write the code from the previous example much more succinctly, like this:
 ```
 d4, h2, 2, 2b4;
 2*d3;
@@ -80,6 +80,7 @@ dodge 2+, pass 2+, catch 2+, sure hands 2+, sure feet 2+
 Or in short form Dodge: `d2`, Pass: `p2`, Catch: `c2`, Sure Hands: `sh2` and Sure Feet: `sf2`. 
 
 > **Example:** An Amazon linewoman with the Dodge skill needs to make 3+ dodge. The syntax is `dodge 4+` or just `d4`.
+
 Sure Hands and Sure Feet can be further shortened to `h` and `f` respectively.
 
 ## Blocks
