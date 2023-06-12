@@ -33,7 +33,7 @@ There are five re-roll skills in the game: dodge, pass, catch, sure hands, and s
 
 **Long form syntax**
 ```
-dodge 4, pass 4, catch 4, sure hands 4, sure feet 4.
+dodge 4, pass 4, catch 4, sure hands 4, sure feet 4
 ```
 
 **Short form syntax:**
@@ -41,7 +41,7 @@ dodge 4, pass 4, catch 4, sure hands 4, sure feet 4.
 d4, p4, c4, sh4, sf4
 ```
 
-You can optionally omit the `s` in ``sh`` and ``sf``, yielding e.g.
+You can omit the `s` in ``sh`` and ``sf``, yielding e.g.
 ```
 h4, f4
 ```
