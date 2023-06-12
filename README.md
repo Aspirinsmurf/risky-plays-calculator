@@ -10,6 +10,7 @@ The input is pure text, and the output is one or more tables of action sequences
 ## The Basics
 Input consists of a series of comma-delimited commands that represent a sequence of actions by a player, terminated with a semicolon.
 
+### Single player
 An example input could look like this:
 ```
 dodge 4+, sure hands 2+, "rush" 2+, 2block4;
