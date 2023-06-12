@@ -20,33 +20,22 @@ dodge 4+, sure hands 2+, 2+, 2block4;
 dodge 3+, dodge 3+;
 4+, sure feet 2+, sure feet 2+;
 ```
-> *In this example, the actions on each line are done by different players. The first player tries to perform the same sequence as before. Then the second player attempts a 3+ dodge twice with the Dodge skill. Finally, the third player attempts a 4+ dodge and two rushes with sure feet.
+> *In this example, the actions on each line are done by different players. The first player tries to perform the same sequence as before. Then the second player attempts two consecutive 3+ dodges with the Dodge skill. Finally, the third player attempts a 4+ dodge and two rushes with sure feet.*
 
 
 ### Short-hand and grouping
 There are short-form synomyms for every action. And there are ways to group multiple identical actions together. The code from the previous example could be written more succinctly as:
 
 ```
-d4, h2, f2, 2b4; 2*d4; 2*d4, 2*f2;
+d4, h2, 2, 2b4;
+2*d3;
+4, 2*f2;
 ```
+
+Or even more minimalistically, as `d4,h2,2,2b4;2*d3;4,2*f2;`.
+
 The short and long forms can be mixed and matched as you want.
 
-
-### New input
-In the examples above, each player's activation has been terminated with a semicolon. If you add more input afterwards, the calculator will assume that you're activating a new player.
-
-First input:
-`4+, 2+;`
-Second input:
-``2+, 2+;``
-> In this example, the calculator will assume that you mean to add a new player's activation sequence in the second input.
-
-If you want to override this behavior, terminate the first input string with a comma instead.
-First input:
-``4+, 2+,``
-Second input:
-``2+, 2+;``
-> In this example, the calculator will assume that you mean to keep adding to the previous player's action sequence.
 
 ### Multiple outputs
 By default, the calculator outputs a single table. You can force it to give multiple outputs with the keyword `output` and a number followed by a colon:
@@ -60,25 +49,13 @@ output 2:
 4+, 2+, 2+;
 dodge 3+, dodge 4+;
 ```
-
 This lets you easily compare various lines of play.
-
-## New input with multiple outputs
-If you want to keep adding to the probability tables with more input, you need to specify which one. If you don't, it will default to `output 0`, which is the one you don't need to specify.
-
-New input:
-```
-2b4;
-output 2:
-4+, 2+; 
-```
-In this example, `2b4;` will be added to `output 1` and `4+, 2+;`
 
 
 ### Miscellaneous
 The interpreter ignores whitespace and newlines and is case-insensitive. `SUREFEET` and `sure feet` are identical.
 
-## The Dice Rolls
+## Dice Rolls
 RiskyPlay supports six types of dice rolls: normal d6 rolls, skill rolls, blocks, armor breaks, injury rolls, and arbitrary rolls.
 
 ###  Normal rolls
@@ -102,7 +79,7 @@ dodge 2+, pass 2+, catch 2+, sure hands 2+, sure feet 2+
 
 Or in short form dodge `d2`, pass `p2`, catch `c2`, sure hands `sh2` and sure feet `sf2`. 
 
-> **Example:** An Amazon linewoman with the Dodge skill needs to make 3+ dodge. In short form, the syntax is `d4`.
+> **Example:** An Amazon linewoman with the Dodge skill needs to make 3+ dodge. The syntax is `dodge 4+` or just `d4`.
 
 Sure hands and sure feet can be further shortened to `h` and `f` respectively.
 
@@ -160,14 +137,10 @@ You can use the letter `x` instead of `*` if you prefer.
 #### With multiple players
 If you want to repeat an identical series of actions with different (but functionally identical) players, you need to enclose the entire activation in parentheses, including the semicolon.
 
-This isn't always so important, but it's important if they have skill re-rolls.
+This isn't always an important distinction, but it's important if they have skill re-rolls.
 
-> **Without parentheses:** You want to know the odds of all three of your rookie Human Linemen making their 4+ dodges to get away from the Line of Scrimmage. You could use `3*d4`.
+> **Without parentheses:** You want to know the odds of all three of your rookie Human Linemen making their 4+ dodges to get away from the Line of Scrimmage. You could use `3*d4;`.
 
-> **Parentheses:** Same scenario, but all the players have the Dodge skill. Using `3*d4` will now give the wrong results. You will need to use `3*(d4;)`;
+> **Parentheses:** Same scenario, but the players all have the Dodge skill. Using `3*d4` will now give the wrong results. You will need to use `3*(d4;)`;
 
-You can multiply complex action sequences like this too, for example `3*(4+, 2*2+);` for three different players each trying to make a 4+ dodge and two rushes.
-
-
-
-
+You can multiply complex action sequences like this too, for example `3*(4+, 2*2;)` for three different players each trying to make a 4+ dodge and two rushes.
