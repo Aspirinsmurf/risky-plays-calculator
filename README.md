@@ -12,7 +12,7 @@ d4, h2, f2, 2b4;
 d4;
 d4, f2, f2;
 ```
-> This example would be interpreted as three different players performing these actions.
+> This example would be interpreted as actions from three different players.
 
 The interpreter ignores whitespace and line breaks, so the code above could be rewritten as:
 
