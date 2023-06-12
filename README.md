@@ -26,7 +26,7 @@ dodge 3+, dodge 3+;
 > In this example, the actions on each line are done by four different players. The first player tries to perform the same sequence as before. Then the second player attempts two consecutive 3+ dodges with the Dodge skill. The third player then attempts a 4+ dodge without the Dodge skill and two rushes with Sure Feet. Finally, the fourth player attempts the same actions as the third.
 
 ### Short-hand
-Every action has a short-form alternative, and you can generate multiple identical action sequences with multiplication. An advanced user might choose to write the code from the previous example much more succinctly, like this:
+Every action has a short-form alternative, and you can generate multiple identical action sequences with multiplication syntax. An advanced user might choose to write the code from the previous example much more succinctly, like this:
 ```
 d4, h2, 2, 2b4;
 2*d3;
