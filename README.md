@@ -6,10 +6,10 @@ RiskyPlay input consists of a series of comma-delimited commands that represent 
 d4, h2, f2, 2b4
 ```
 
-To add actions from more players, replace the comma separating them with a semicolon.
-```
+To add actions from more players, replace the comma separator with a semicolon.
+```csv
 d4, h2, f2, 2b4;
-d4;
+4, 4;
 d4, f2, f2;
 ```
 > This example would be interpreted as actions from three different players.
@@ -22,11 +22,11 @@ d4,h2,f2,2b4;4;d4,f2,f2
 
 # Normal rolls
 
-The syntax for a normal d6 roll is n, where n is the target number.
+The syntax for a normal d6 roll is *n*, where *n* is the target number.
 
-**Example:** A human lineman attempts a 4+ dodge out of a tackle zone. The syntax is ``4``.
+**Example:** A human lineman attempts a 4+ dodge. The syntax is ``4``.
 
-Use this syntax when the player in question doesn't have a skill that lets you re-roll the result.
+Use this syntax when the player doesn't have a skill re-roll for that action.
 
 # Skill Rolls
 There are five re-roll skills in the game: dodge, pass, catch, sure hands, and sure feet.
@@ -44,7 +44,7 @@ A block action consists of the number of block dice, the keyword `b`, and then t
 > **Example:** A Saurus makes a two-die block. The acceptable outcomes are Defender Down, Defender Stumbles and Push. The syntax is `2b4`.
 
 ## Acceptable outcomes
-To determine the number of acceptable outcomes, consult and add up the values from this chart:
+To determine the number of acceptable outcomes, add up the desired values from this chart:
 
 |Result|Value|
 |-|-|
@@ -53,12 +53,12 @@ To determine the number of acceptable outcomes, consult and add up the values fr
 |Both Down | 1 |
 |Push | 2 |
 
-**Example:** A Saurus has a 2-die block without the Block skill, so you only want a result of Defender Stumbles, Defender Down or Push. The syntax is `2b4`.
+> **Example:** A Saurus has a 2-die block. He wants a result of Defender Stumbles, Defender Down or Push. The syntax is `2b4`.
 
 ## Negative dice blocks
-Blocks where the opponent chooses the result take a minus `-` before the number of dice, like `-2b4`.
+For blocks where the opponent chooses the result, add a minus sign `-` before the number of dice, like `-2b4`.
 
-> **Example:** A Human Lineman (S3) blocks a Saurus (S4) without any assists. You want a Push to set up a crowdsurf. The syntax for this is `-2b2`.
+> **Example:** A Human Lineman (S3) blocks a Saurus (S4) without any assists. He wants a Push to set up a crowdsurf. The syntax is `-2b2`.
 
 ## Blocks and turnovers
 The interpreter assumes that only a result of Attacker Down ("Skulls") will result in a turnover. Don't include a result of "Both Down" as acceptable unless the blocking player has the Block skill.
