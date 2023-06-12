@@ -32,10 +32,10 @@ If you want to add to an existing entries table with actions from a new player, 
 ;dodge 4+, dodge 4+
 ```
 
-# The Dice Rolls
+## The Dice Rolls
 RiskyPlay supports six different types of dice rolls: normal d6 rolls, skill rolls, blocks, armor breaks, injury rolls and arbitrary odds. 
 
-##  1. <a name='Normalrolls'></a>Normal rolls
+###  Normal rolls
 
 The syntax for a normal d6 roll is `n+`, where `n+` is the target number.
 
@@ -45,19 +45,19 @@ You use this syntax when the player doesn't have a skill re-roll for that action
 
 The plus sign `+` is optional and can be omitted.
 
-# Skill rolls
+### Skill rolls
 There are five re-roll skills in the game: dodge, pass, catch, sure hands, and sure feet.
 
 The syntax for a 2+ roll with each skill is sequence would be:
 
-**Long-form**
+**Long-form syntax**
 
-```json
+```
 dodge 2+, pass 2+, catch 2+, sure hands 2+, sure feet 2+
 ```
 
-**Short-form
-```json
+**Short-form syntax**
+```
 d2, p2, c2, sh2, sf2
 ```
 
