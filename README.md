@@ -46,6 +46,33 @@ You can optionally omit the `s` in ``sh`` and ``sf``, yielding e.g.
 h4, f4
 ```
 
+# Blocks
+The syntax for a block action consists of the number of block dice to roll and the keyword `b`, followed by the number of acceptable outcomes, like `2b4`.
+
+**Example:** A Saurus makes a two-die block. The acceptable outcomes are Defender Down, Defender Stumbles and Push. The syntax is `2b4`.
+
+## Negative dice blocks
+Blocks where the opponent chooses the result take a minus `-` before the number of dice, like `-2b4`.
+
+**Example:** A Human Lineman (S3) blocks a Saurus (S4) without any assists. He wants a Push to set up a crowdsurf. The syntax for this is `-2b(2)`.
+
+## Acceptable outcomes
+To determine the number of acceptable outcomes, onsult and add up the values from this chart:
+
+|Result|Value|
+|-|-|
+|Defender Down ("Pow"): | 1 |
+|Defender Stumbles | 1 |
+|Both Down | 1 |
+|Push | 2 |
+
+**Example:** A Saurus has a 2-die block without the Block skill, so you only want a result of Defender Stumbles, Defender Down or Push. The syntax is `2b4`.
+
+## Blocks and turnovers
+The interpreter assumes that only a result of Attacker Down ("Skulls") will result in a turnover. Don't include a result of "Both Down" as acceptable unless the blocking player has the Block skill.
+
+*'A note on Block:** Don't automatically include Both Down as acceptable if the player has the Block skill either. If the opposing player has Block too, this might not be an acceptable outcome.
+
 
 
 
