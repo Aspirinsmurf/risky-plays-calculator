@@ -9,13 +9,13 @@ Input consists of a series of comma-delimited commands that represent a sequence
 
 An example input could look like this:
 ```
-dodge 4+, sure hands 2+, 2+, 2block4
+dodge 4+, sure hands 2+, 2+, 2block 4
 ```
 > *In this example, one player would be dodging out with the Dodge skill, picking up the ball with Sure Hands, making 2+ roll on a rush and blitzing with two dice and getting either defender down, defender stumbles or a push.*
 
 To add actions from additional players, replace the comma separator between them with a semicolon:
 ```
-dodge 4+, sure hands 2+, 2+, 2block;
+dodge 4+, sure hands 2+, 2+, 2block 4;
 dodge 4+, dodge 4+;
 dodge 4+, sure feet 2+, sure feet 2+
 ```
@@ -27,13 +27,13 @@ The interpreter ignores whitespace and line breaks. In addition, there are short
 d4,h2,f2,2b4;4;d4,f2,f2
 ```
 
-If you want to add to an existing entries table with actions from a new player, start the string with a semicolon:
+If you want to add to an existing table with actions from a new player, start the string with a semicolon:
 ```
 ;dodge 4+, dodge 4+
 ```
 
 ## The Dice Rolls
-RiskyPlay supports six different types of dice rolls: normal d6 rolls, skill rolls, blocks, armor breaks, injury rolls and arbitrary odds. 
+RiskyPlay supports six types of dice rolls: normal d6 rolls, skill rolls, blocks, armor breaks, injury rolls and arbitrary odds. 
 
 ###  Normal rolls
 
@@ -41,7 +41,7 @@ The syntax for a normal d6 roll is `n+`, where `n+` is the target number.
 
 **Example:** A Human Lineman attempts a 4+ dodge. The syntax is ``4+``.
 
-You use this syntax when the player doesn't have a skill re-roll for that action.
+Use this syntax when the player doesn't have a skill re-roll for that action.
 
 The plus sign `+` is optional and can be omitted.
 
