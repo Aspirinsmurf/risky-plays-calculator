@@ -2,15 +2,11 @@
 ## 1. Introduction
 
 RiskyPlay input consists of a series of comma-delimited commands that represent actions, for example:
-
-**Example:**
 ```
 d4, h2, f2, 2b4
 ```
 
 To add actions from more players, replace the comma separating them with a semicolon.
-
-**Example:**
 ```
 d4, h2, f2, 2b4;
 d4;
