@@ -3,7 +3,7 @@
 # Syntax Reference
 
 ## Introduction
-RiskyPlay is a probability calculator and risk analysis tool for Blood Bowl 2020. It uses a human-readable notation to enable rapid input of complex sequences of actions.
+RiskyPlay is a probability calculator and risk analysis tool for Blood Bowl 2020. It uses a human-readable notation to enable rapid input of sequences of actions.
 
 The input is pure text, and the output is one or more tables of action sequences and probabilities.
 
@@ -13,9 +13,9 @@ Input consists of a series of comma-delimited commands that represent a sequence
 ### Single player sequence
 An example input could look like this:
 ```
-dodge 4+, sure hands 2+, "rush" 2+, 2block4;
+dodge 4+, sure hands 2+, 2+, 2block4;
 ```
-> In this example, one player tries dodging out with the Dodge skill on a 4+, picking up the ball with Sure Hands on a 2+, making a 2+ roll on a Rush and Blitzing with two dice and getting either defender down, defender stumbles or a push.*
+> In this example, one player tries dodging out with the Dodge skill on a 4+, picking up the ball with Sure Hands on a 2+, making a 2+ roll on a Rush and Blitzing with two dice and getting either defender down, defender stumbles or a push.
 
 ### Multiple players
 To input actions from multiple players, replace the comma separator with a semicolon for each new player:
@@ -25,9 +25,9 @@ dodge 3+, dodge 3+;
 4+, sure feet 2+, sure feet 2+;
 4+, sure feet 2+, sure feet 2+;
 ```
-> In this example, the actions on each line are done by four different players. The first player tries to perform the same sequence as before. Then the second player attempts two consecutive 3+ dodges with the Dodge skill. The third player then attempts a 4+ dodge and two rushes with Sure Feet. Finally, the fourth player does the same as the third.
+> In this example, the actions on each line are done by four different players. The first player tries to perform the same sequence as before. Then the second player attempts two consecutive 3+ dodges with the Dodge skill. The third player then attempts a 4+ dodge without the Dodge skill and two rushes with Sure Feet. Finally, the fourth player does the same as the third.
 
-### Short-hand and grouping
+### Short-hand
 There are short-form synomyms for every action, and you can group multiple identical actions together. An advanced user might choose to write the code from the previous example much more succinctly, like this:
 ```
 d4, h2, 2, 2b4;
@@ -52,16 +52,17 @@ output:
 4+, 2+, 2+;
 dodge 3+, dodge 4+;
 ```
-This lets you easily compare the chances of different lines of play.
+everything after the `output:` will be added to a separate, independent output table. This lets you easily compare different lines of play.
+
+Optionally, you can label the different tables with `output "label":` or `o "label":`.
 
 ### Miscellaneous
-The interpreter ignores whitespace and newlines and is case-insensitive. `SUREFEET` and `sure feet` are identical.
+The interpreter ignores whitespace and newlines. And it's case-insensitive, so `SUREFEET` and `sure feet` are identical.
 
 ## Dice Rolls
 RiskyPlay supports many types of dice rolls, such as normal d6 rolls, skill rolls, blocks, armor breaks, injury rolls, and arbitrary rolls.
 
 ###  Normal rolls
-
 The syntax for a normal d6 roll is `n+`, where `n+` is the target number.
 
 Use this syntax when the player doesn't have a skill re-roll for the attempted action.
@@ -69,6 +70,8 @@ Use this syntax when the player doesn't have a skill re-roll for the attempted a
 > **Example:** A Human Lineman without the Dodge skill attempts a 4+ dodge. The syntax is ``4+``.
 
 The plus sign `+` is optional and can be omitted.
+
+**Labels:** Optionally, you can prepend a normal roll with a `"label"` that gets added to its line in the output table. This can be useful for clarity.
 
 ### Skill rolls
 There are five re-roll skills in the game: Dodge, Pass, Catch, Sure Hands, and Sure Feet.
@@ -105,9 +108,9 @@ To determine the number of acceptable outcomes, consult this chart and add up th
 
 > **Example:** A Saurus has a 2-die block against a Dark Elf Lineman. The only acceptable result is Defender Down. The syntax is `2block1` or `2b1`.
 
-The interpreter assumes that only a result of Attacker Down will result in a turnover. Don't include a result of "Both Down" as acceptable unless the blocking player has the Block skill.
+// REQUEST FOR COMMENT: Is this the most intuitive way to deal with acceptable outcomes from a block or should it be in the format of 1+, 2+, etc.? I often think of block results in terms of the latter, but I rarely use actual Block Dice in play, so I'm biased.
 
-// REQUEST FOR COMMENT: Is this the most intuitive way to deal with acceptable outcomes from a block or should it be in the format of 1+, 2+, etc.? I often think of blocks like this, but I rarely use actual Block Dice in play, so I'm biased.
+**Note:** The interpreter assumes that only a result of Attacker Down will result in a turnover. Don't include a result of "Both Down" as acceptable unless the blocking player has the Block skill.
 
 ###  Negative dice blocks
 For blocks where the opponent chooses the result, add a minus sign `-` before the number of block dice, like `-2block` or `-2b`.
@@ -140,7 +143,7 @@ If you want to repeat an identical series of actions with different (but functio
 
 This isn't always an important distinction, but it's important if they have skill re-rolls.
 
-> **Without parentheses:** You want to know the odds of all three of your rookie Human Linemen making their 4+ dodges to get away from the Line of Scrimmage. You could use `3*d4;`.
+> **Without parentheses:** You want to know the odds of all three of your rookie Human Linemen making their 4+ dodges to get away from the Line of Scrimmage. You could use `3*d4;` for this.
 
 > **With parentheses:** Same scenario, but the players all have the Dodge skill. Using `3*d4` will now give the wrong results. You will need to use `3*(d4;)`;
 
