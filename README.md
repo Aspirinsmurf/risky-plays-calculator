@@ -28,7 +28,7 @@ dodge 3+, dodge 3+;
 > In this example, the actions on each line are done by four different players. The first player tries to perform the same sequence as before. Then the second player attempts two consecutive 3+ dodges with the Dodge skill. The third player then attempts a 4+ dodge without the Dodge skill and two rushes with Sure Feet. Finally, the fourth player does the same as the third.
 
 ### Short-hand
-There are short-form synomyms for every action, and you can group multiple identical actions together. An advanced user might choose to write the code from the previous example much more succinctly, like this:
+Every action has a short-form alternative, and you can generate multiple identical action sequences with multiplication. An advanced user might choose to write the code from the previous example much more succinctly, like this:
 ```
 d4, h2, 2, 2b4;
 2*d3;
@@ -52,12 +52,12 @@ output:
 4+, 2+, 2+;
 dodge 3+, dodge 4+;
 ```
-everything after the `output:` will be added to a separate, independent output table. This lets you easily compare different lines of play.
+Everything after the `output:` will be added to a separate, independent output table. This lets you easily compare different lines of play.
 
 Optionally, you can label the different tables with `output "label":` or `o "label":`.
 
 ### Miscellaneous
-The interpreter ignores whitespace and newlines. And it's case-insensitive, so `SUREFEET` and `sure feet` are identical.
+The interpreter ignores whitespace and newlines. And it's case-insensitive. `SUREFEET` and `sure feet` are identical.
 
 ## Dice Rolls
 RiskyPlay supports many types of dice rolls, such as normal d6 rolls, skill rolls, blocks, armor breaks, injury rolls, and arbitrary rolls.
@@ -71,7 +71,7 @@ Use this syntax when the player doesn't have a skill re-roll for the attempted a
 
 The plus sign `+` is optional and can be omitted.
 
-**Labels:** Optionally, you can prepend a normal roll with a `"label"` that gets added to its line in the output table. This can be useful for clarity.
+**Labels:** Optionally, you can add a label to a normal roll with `"label"` right before it, e.g. `"rush" 2+`. The label gets added to the action line in the output table. This can be useful for clarity, but it's irrelevant for the calculation.
 
 ### Skill rolls
 There are five re-roll skills in the game: Dodge, Pass, Catch, Sure Hands, and Sure Feet.
@@ -150,6 +150,7 @@ This isn't always an important distinction, but it's important if they have skil
 You can multiply complex action sequences like this too.
 
 > **Example:** You could use `3*(4+, 2*2;)` for three different players each trying to make a 4+ dodge and two rushes.
+> **Example:** You could use `2*(2b2,2b2;)` to get the odds of pushing an opposing player 4 squares with 2 different Frenzy players, without downing the target in the attempt.
 
 
 
