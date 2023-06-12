@@ -31,22 +31,15 @@ Use this syntax when the player in question doesn't have a skill that lets you r
 # Skill Rolls
 There are five re-roll skills in the game: dodge, pass, catch, sure hands, and sure feet.
 
-**Long form syntax**
+The syntax is:
 ```
-dodge 4, pass 4, catch 4, sure hands 4, sure feet 4
-```
-
-**Short form syntax:**
-```
-d4, p4, c4, h4, f4
+d4, p4, c4, 4f, h4
 ```
 
 > **Example:** An Amazon linewoman with the Dodge skill needs to make 3+ dodge. The syntax is `d4`.
 
-In this document, the short form syntax will be used throughout.
-
 # Blocks
-The syntax for a block action consists of the number of block dice to roll and the keyword `b`, followed by the number of acceptable outcomes, like `2b4`.
+A block action consists of the number of block dice, the keyword `b`, and then the number of acceptable outcomes, like `2b4`.
 
 > **Example:** A Saurus makes a two-die block. The acceptable outcomes are Defender Down, Defender Stumbles and Push. The syntax is `2b4`.
 
