@@ -1,11 +1,11 @@
 + [Introduction](#introduction)
 + [The Basics](#the-basics)
 + [Dice Rolls](#dice-rolls)
-++ [Normal rolls](#normal-rolls)
-++ [Skill rolls](#skill-rolls)
-++ [Blocks](#blocks)
-++ [Armor breaks](#armor-breaks)
-++ [Injury rolls](#injury-rolls)
+    + [Normal rolls](#normal-rolls)
+    + [Skill rolls](#skill-rolls)
+    + [Blocks](#blocks)
+    + [Armor breaks](#armor-breaks)
+    + [Injury rolls](#injury-rolls)
 
 
 # Introduction
