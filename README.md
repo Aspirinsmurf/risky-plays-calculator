@@ -11,7 +11,7 @@ An example input could look like this:
 ```
 dodge 4+, sure hands 2+, 2+, 2block4
 ```
-> In this example, one player would be dodging out, picking up the ball, making a rush and blitzing with two dice and getting either attacker down, defender stumbles or a push.
+> *In this example, one player would be dodging out, picking up the ball, making a rush and blitzing with two dice and getting either attacker down, defender stumbles or a push.*
 
 To add actions from additional players, replace the comma separator between them with a semicolon:
 ```
