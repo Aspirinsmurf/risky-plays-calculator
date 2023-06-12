@@ -71,7 +71,7 @@ d2, p2, c2, sh2, sf2
 
 > **Example:** An Amazon linewoman with the Dodge skill needs to make 3+ dodge. In short form, the syntax is `d4`.
 
-Sure hands and sure feet can be further shortened to `h2` and `f2` respectively.
+Sure hands and sure feet can be further shortened to `h` and `f` respectively.
 
 
 ## Blocks
