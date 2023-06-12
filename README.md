@@ -3,7 +3,7 @@
 # Syntax Reference
 
 ## Introduction
-AnyPlay is a probability calculator and risk analysis tool for Blood Bowl 2020. It uses a human-readable notation language to enable rapid input of sequences of actions. The input is text, and the output is one or more tables of action sequences and probabilities. It's like AnyDice for Blood Bowl.
+AnyPlay is a probability calculator and risk analysis tool for Blood Bowl 2020. It uses a human-readable notation language to enable rapid input of sequences of actions. The input is text, and the output is one or more tables of action sequences and associated probabilities. It's like AnyDice for Blood Bowl, if you're familiar with that application.
 
 ## The Basics
 At it's core, input consists of a series of comma-delimited commands that represent a sequence of actions by a player, terminated with a semicolon.
@@ -11,14 +11,14 @@ At it's core, input consists of a series of comma-delimited commands that repres
 ### Single player sequence
 An example input could look like this:
 ```
-dodge 4+, sure hands 2+, 2+, 2block(dn,ds,p);
+dodge 4+, sure hands 2+, 2+, 2d block(dn, ds, p);
 ```
-> In this example, one player tries dodging out with the Dodge skill on a 4+, picking up the ball with Sure Hands on a 2+, making a 2+ roll rushing and blitzing with two dice and getting either defender down, defender stumbles or a push.
+> In this example, one player tries dodging out with the Dodge skill on a 4+, picking up the ball with Sure Hands on a 2+, making a 2+ roll rush, blitzing with two dice and getting either defender down, defender stumbles or a push.
 
 ### Multiple players
 To input actions from multiple players, replace the comma separator with a semicolon for each new player:
 ```
-dodge 4+, sure hands 2+, 2+, 2block(dn,ds,p);
+dodge 4+, sure hands 2+, 2+, 2 block(dn, ds, p);
 dodge 3+, dodge 3+;
 4+, sure feet 2+, sure feet 2+;
 4+, sure feet 2+, sure feet 2+;
@@ -34,7 +34,7 @@ d4, h2, 2, 2b4;
 ```
 Or even in a single line, like this:
 ```
-d4,h2,2,2b4;2*d3;2x(4,2*f2;)
+d4,h2,2,2b4;2*d3;2*(4,2*f2;)
 ```
 The short and long forms can be mixed and matched. Use whatever you're comfortable with.
 
@@ -55,7 +55,7 @@ Everything after the `output:` will be added to a separate, independent output t
 Optionally, you can label the different tables with `output "label":` or `o "label":`.
 
 ### Miscellaneous
-The interpreter ignores whitespace and newlines. And it's case-insensitive. `SUREFEET` and `sure feet` are identical. Labels inside "double quotes" preserve case and spaces, but they're not used in calculations.
+The interpreter ignores whitespace and newlines. It's case-insensitive, so `SUREFEET` and `sure feet` are identical. Labels inside "double quotes" preserve case and spaces, but they're not used in calculations.
 
 ## The Actions
 RiskyPlay supports many types of dice rolls, such as normal d6 rolls, skill rolls, blocks, armor breaks, injury rolls, and arbitrary rolls.
@@ -69,7 +69,7 @@ Use this syntax when the player doesn't have a skill re-roll for the attempted a
 
 The plus sign `+` is optional and can be omitted.
 
-Optionally, you can add a label to a normal roll with `"label"` before it, e.g. `"Rush" 2+` or `"Dodge" 4+`. The label is printed to the action line in the output table. This can be useful for clarity, but it's irrelevant for the calculations. By default, the label is "Unskilled *n*+", where *n* is the target number. A custom label replaces "Unskilled".
+Optionally, you can add a label to a normal roll with `"label"` before it, e.g. `"Rush" 2+` or `"Dodge" 4+`. The label is printed to the action's line in the output table. This can be useful for clarity, but it's irrelevant for calculations.
 
 ### Skill rolls
 There are five re-roll skills in the game: Dodge, Pass, Catch, Sure Hands, and Sure Feet.
@@ -88,27 +88,29 @@ The output in the table becomes "Dodge w/dodge 2+", "Pass w/pass 2+", etc.
 
 ## Blocks
 
-A block action consists of the number of block dice to roll, the keyword `block` and the number of acceptable outcomes, like `2block4`.
+A block action consists of the number of block dice to roll, the keyword `block` and the acceptable outcomes, like `2block(dn,ds,p)`.
 
-> **Example:** A Saurus makes a two-die block. The acceptable outcomes are Defender Down, Defender Stumbles and Push. The syntax is `2block4`.
+> **Example:** A Saurus makes a two-die block. The acceptable outcomes are Defender Down, Defender Stumbles and Push. The syntax is `2block(dd,ds,p)`.
 
-The keyword `block` can be shortened to `b`, giving `2b4` as the short form for the example above.
+The keyword `block` can be shortened to `b`, giving `2b(dd,ds,p)` as the short form for the example above.
 
-If there are no digits before the keyword, the parser defaults to a 1-die block. The inputs `b4` and `1b4` are synonymous.
+If there are no digits before the keyword, the parser defaults to a 1-die block. The inputs `b4` and `1b` are synonymous.
 
 ###  Acceptable outcomes
-To determine the number of acceptable outcomes, consult this chart and add up the values:
+To determine the of acceptable outcomes, consult this chart.
 
-|Result            |Value|
-|------------------|-----|
-|Defender Down     | 1   |
-|Defender Stumbles | 1   |
-|Both Down         | 1   |
-|Push              | 2   |
+|Result            |Syntax|Value|
+|------------------|------|-----|
+|Defender Down     |`dd`  |1    |
+|Defender Stumbles |`ds`  |1    |
+|Both Down         |`bd`  |1    |
+|Push              |`p`   |2    |
 
-> **Example:** A Saurus has a 2-die block against a Dark Elf Lineman. The only acceptable result is Defender Down. The syntax is `2block1` or `2b1`.
+You can either list the acceptable results out in the parantheses like `(dd,ds,bds), or you can add up their values and write the total `n` without the parentheses.
 
-// REQUEST FOR COMMENT: Is this the most intuitive way to deal with acceptable outcomes from a block or should it be in the format of 1+, 2+, etc.? Or even in the form `(DN,DS,P)`? I often think of block results in terms of the latter, but I rarely use actual Block Dice in play, so I'm biased.
+> **Example:** A Saurus has a 2-die block against a Dark Elf Lineman. The only acceptable result is Defender Down, which has a value of one. The syntax is `2block1` or `2b1`.
+
+// REQUEST FOR COMMENT: Is this the most intuitive way to deal with acceptable outcomes from a block? Or should it rather be in the format of 1+, 2+, etc.? I often think of block results in terms of the latter, but I rarely use actual Block Dice in play, so I'm biased.
 
 **Note:** The interpreter assumes that only a result of Attacker Down will result in a turnover. Don't include a result of "Both Down" as acceptable unless the blocking player has the Block skill.
 
@@ -131,7 +133,7 @@ The syntax for an Injury roll is `injury n+`, where `n` is the target number. Th
 
 ## Advanced Usage
 
-## Multiplication
+### Multiplication
 You can group a number of identical actions by the same player into one command by multiplication:
 ```
 2*d3, 3*2;
@@ -152,6 +154,24 @@ This isn't always an important distinction, but it's important if they have skil
 You can multiply complex action sequences like this too.
 
 > **Example:** You could use `3*(4+, 2*2;)` for three different players each trying to make a 4+ dodge and two rushes.
+
+#### Flags
+A flag is a virtual action added to a player's action sequence to account for an unusual circumstance, such as having an usual skill.
+
+Let's say you have a Loner player (without the Dodge skill) trying to make a 4+ dodge and a 2+ dodge. This could be represented as follows:
+```
+loner, 4+, 3+;
+```
+A flag is valid for all actions that come after it in the sequence. So for the example above, using `4+, 3+, loner;` would give the wrong results.
+
+Multiple flags can be added to a player's action sequence.
+
+For example, if the Loner player from the previous example was also a Pro, this could be represented by:
+```
+loner, pro, 4+, 3+;
+```
+Or in short form `l, p, 4, 4;`.
+
 
 
 
