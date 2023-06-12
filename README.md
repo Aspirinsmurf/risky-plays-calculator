@@ -9,10 +9,9 @@ Input consists of a series of comma-delimited commands that represent a sequence
 
 An example input could look like this:
 ```
-dodge 4+, sure hands 2+, 2+, 2block 4+
+dodge 4+, sure hands 2+, 2+, 2block4
 ```
-
-This would be a sequence of actions by one player.
+> In this example, one player would be dodging out, picking up the ball, making a rush and blitzing with two dice and getting either attacker down, defender stumbles or a push.
 
 To add actions from additional players, replace the comma separator between them with a semicolon:
 ```
