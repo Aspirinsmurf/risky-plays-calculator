@@ -38,12 +38,7 @@ dodge 4, pass 4, catch 4, sure hands 4, sure feet 4
 
 **Short form syntax:**
 ```
-d4, p4, c4, sh4, sf4
-```
-
-You can omit the `s` in ``sh`` and ``sf``, yielding e.g.
-```
-h4, f4
+d4, p4, c4, h4, f4
 ```
 
 # Blocks
