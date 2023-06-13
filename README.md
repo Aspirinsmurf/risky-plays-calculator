@@ -16,7 +16,9 @@ dodge 4+, sure hands 2+, 2+, 2block4;
 ```
 > In this example, one player tries dodging out with the Dodge skill on a 4+, picking up the ball with Sure Hands on a 2+, making a 2+ roll rush, blitzing with two block dice and getting either defender down, defender stumbles or a push.
 
-// REQUEST FOR COMMENT: Should the terminology "action sequence" be ditched in favor of "action chain"?
+* * *
+*REQUEST FOR COMMENT: Should the terminology "action sequence" be ditched in favor of "action chain"?*
+* * *
 
 ### Multiple players
 To input actions from multiple players, replace the comma separator with a semicolon for every new player activated after the first:
@@ -74,9 +76,9 @@ For example, if the Loner player from the previous example was also a Pro, this 
 ```
 loner, pro, 4+, 3+;
 ```
-
-// REQUEST FOR COMMENT: Should there be a way to markup flags as different from actions, e.g. `#keyword?` Should this markup be obligatory?
-
+* * *
+*// REQUEST FOR COMMENT: Should there be a way to markup flags as different from actions, e.g. `#keyword?` Should this markup be obligatory?*
+* * *
 ## Arguments
 An argument is additional information appended to the end of an action expression to account for unusual circumstances. They use the syntax `!keyword`, sometimes with an additional variable for degree or effect.
 
@@ -85,9 +87,9 @@ For example, if a player's dodge attempt could be affected by an opposing player
 dodge 4+ !diving tackle;
 ```
 An action can have a whole list of different arguments, like `action !arg1 !arg2`
-
-
-// REQUEST FOR COMMENT: I'm not overly fond of having both flags and arguments, but they each have subtly different use cases. I'm willing to discuss alternatives if some genius has better ideas.
+* * *
+*// REQUEST FOR COMMENT: I'm not overly fond of having both flags and arguments, but they each have subtly different use cases. I'm willing to discuss alternatives if some genius has better ideas.*
+* * *
 
 ### Miscellaneous
 The interpreter ignores whitespace and newlines. It's case-insensitive, so `SUREFEET` and `sure feet` are identical. Labels inside "double quotes" preserve case and spaces, but they're not used in calculations.
@@ -145,20 +147,20 @@ To determine the number of acceptable outcomes, add up the values of the desired
 
 > **Example:** A Saurus has a 2-die block against a Dark Elf Lineman. The only acceptable result is Defender Down, which has a value of one. The syntax is `2block1` or `2b1`.
 
-// REQUEST FOR COMMENT: Is this the most intuitive way to deal with acceptable outcomes from a block? Or should it rather be in the format of 1+, 2+, etc.? I often think of block die results in terms of the latter, but I rarely use actual Block Dice in play, so I might be biased.
+* * *
+*// REQUEST FOR COMMENT: Is this the most intuitive way to deal with acceptable outcomes from a block? Or should it rather be in the format of 1+, 2+, etc.? I often think of block die results in terms of the latter, but I rarely use actual Block Dice in play, so I might be biased.*
 
-// Also, should people be able to enter the desired results precisely, like `1b(DD, DS, BD)`? I don't really see the point in allowing that, but I *can* see scenarios where counting up the values could actually be slower than just typing it in for new users.
+*Also, should people be able to enter the desired results precisely, like `1b(DD, DS, BD)`? I don't really see the point in allowing that, but I **can** see scenarios where counting up the values could actually be slower than just typing it in for new users.*
 
+*REQUEST FOR COMMENTS: There's an elephant in the room here.... To calculate the correct T/O chance, we kinda need to know if the player has Block/Wrestle or not. And the calculator should ideally track the T/O chance separately from the success and failure chance. A "failure" should be whatever the player deems inadequate in order to succeed, not necessarily what will lead to a turnover.*
 
-// REQUEST FOR COMMENTS: There's an elephant in the room here.... To calculate the correct T/O chance, we kinda need to know if the player has Block/Wrestle or not. And the calculator should ideally track the T/O chance separately from the success and failure chance. A "failure" should be whatever the player deems inadequate in order to succeed, not necessarily what will lead to a turnover.
+*Both `FailureChance > TurnoverChance` and `TurnoverChance < FailureChance` should in theory be possible states, with `FailureChance` defined as `1 - SuccessChance`.*
 
-// Both `FailureChance > TurnoverChance` and `TurnoverChance < FailureChance` should in theory be possible states, with `FailureChance` defined as `1 - SuccessChance`.
+*But for example `2b3` can mean either (DD, DS, BD) or (DD, P, P). The success chance is equal, and so is the failure chance. Yet in the first case, a player presumably has a 1/36 chance of a T/O, with just P(AD) as critical failure state. In the second case, it's presumably 2/36 with P(AD||BD) as critical failure states. Or it might not be, since the player **could** have block/tackle even if the coach considers a BD result to be unacceptable (doesn't move target without a K.O. or injury).*
 
-// But for example `2b3` can mean either (DD, DS, BD) or (DD, P, P). The success chance is equal, and so is the failure chance. Yet in the first case, a player presumably has a 1/36 chance of a T/O, with just P(AD) as critical failure state. In the second case, it's presumably 2/36 with P(AD||BD) as critical failure states. Or it might not be, since the player *could* have block/tackle even if the coach considers a BD result to be unacceptable (doesn't move target without a K.O. or injury).
+*So the question becomes: how to solve it? A good solution might be `bb` as short-hand for a block **with** the Block and/or Wrestle wrestle skill. But what should be the long form? Maybe arguments like `2block3 !block` and/or `2block3 !wrestle`?*
 
-// So the question becomes: how to solve it? A good solution might be `bb` as short-hand for a block *with* the Block and/or Wrestle wrestle skill. But what should be the long form? Maybe arguments like `2block3 !block` and/or `2block3 !wrestle`?
-
-// That's awfully verbose, but I suppose most people should be able to grok the short-hand anyway. I'd like to hear better suggestions though. An empty argument like `2block3!` perhaps? The format `2b3!` could work for short too, but I think I prefer `2bb3` to that option.
+*That's awfully verbose, but I suppose most people should be able to grok the short-hand anyway. I'd like to hear better suggestions though. An empty argument like `2block3!` perhaps? The format `2b3!` could work for short too, but I think I prefer `2bb3` to that option.*
 
 ###  Negative dice blocks
 For blocks where the opponent chooses the result, add a minus sign `-` before the number of block dice, like `-2block` or `-2b`.
@@ -191,16 +193,16 @@ If an Injury Roll was preceded by a Foul Action at any point prior in the player
 
 
 ### Pass Interference
-// Idk... maybe something like `1–(n+)`, with `n` being the opponent's chance to deflect? That makes sense if you understand the math behind it (opposite event rule!), but maybe not otherwise. Perhaps it should instead be `(n+)` as input, in a vague parallel to how they sometimes use parantheses for negatives in finance?
+*// Idk... maybe something like `1–(n+)`, with `n` being the opponent's chance to deflect? That makes sense if you understand the math behind it (opposite event rule!), but maybe not otherwise. Perhaps it should instead be `(n+)` as input, in a vague parallel to how they sometimes use parantheses for negatives in finance?*
 
-// You could also use some arbitrary odds `n/6`, if you care to count it out. But that seems a lot less user-friendly to me.
+*// You could also use some arbitrary odds `n/6`, if you care to count it out. But that seems a lot less user-friendly to me.*
 
-// The same idea applies to e.g. Shadowing. If your line of play requires that an opponent doesn't suceed on Shadowing, it should be possible to denote that in an intuitive fashion. A general way to take any expression and turning it into `1-<expr>` would be useful.
+*// The same idea applies to e.g. Shadowing. If your line of play requires that an opponent doesn't suceed on Shadowing, it should be possible to denote that in an intuitive fashion. A general way to take any expression and turning it into `1-<expr>` would be useful.*
 
 ### Arbitrary Odds
-// Probably `n / d`, with `n` as the numerator and `d` as the denominator. Optionally with an argument to make it safe against Turnovers, or maybe that should be default behavior. It's mostly for bounce results, yeah? In theory you can analyze weather and kick-off events too, but that seems *very* niche.
+*// Probably `n / d`, with `n` as the numerator and `d` as the denominator. Optionally with an argument to make it safe against Turnovers, or maybe that should be default behavior. It's mostly for bounce results, yeah? In theory you can analyze weather and kick-off events too, but that seems **very** niche.*
 
-// Scatter and bounce could get spicy with logical OR as possible operator, see comments under Frenzy. If you could input something like "I either catch it or it bounces to one of these squares", the utility goes way up for e.g. analyzing really hairy ballsacks.
+*// Scatter and bounce could get spicy with logical OR as a possible operator, see comments under Frenzy. If you could input something like "I either catch it or it bounces to one of these squares", the utility goes way up for e.g. analyzing really hairy ballsacks.*
 
 ## Advanced Features
 
@@ -238,7 +240,7 @@ Adding Dirty Player as a flag will affect the next Foul and Injury Roll in that 
 
 Dirty Player can also be added as an argument to Foul Actions and Injury Rolls, but that's usually just more verbose.
 
-// REQUEST FOR COMMENT: Can you do a Blitz+Foul? Foul+Blitz?
+*// REQUEST FOR COMMENT: Can you do a Blitz+Foul? Foul+Blitz?*
 
 ### Diving Tackle
 The effects of an opposing Diving Tackle can be added either as a flag or as an argument to a normal roll or a dodge skill roll.
@@ -255,7 +257,7 @@ If only the first dodge attempt would be affected by Diving Tackle, you will nee
 
 The parser assumes that the opponent will use the skill optimally in a generic sense (force a reroll if possible). But since there's a chance you might be forced to reroll *without* the use of Diving Tackle anyway, the opponent will add it to the *final roll* that percentage of the time.
 
-// The math there gets complex, but I think it's doable. It's what Dave's calculator does, I think.
+*// The math there gets complex, but I think it's doable. It's what Dave's calculator does, I think.*
 
 **Note:** If you have no team re-rolls and no other source of a re-roll for the dodge attempt, you can ignore Diving Tackle and instead adjust the target number by +2 manually.
 
@@ -266,7 +268,7 @@ Example: Dave the Orc wants to Jump Up and punch an orc in the face, hoping for 
 
 ## Frenzy
 
-// this entire section is very much undecided and WIP
+*// this entire section is very much undecided and WIP*
 
 Properly representing Frenzy requires some sort of control flow (with logical OR operator), since the math suddenly requires addition and becomes hellishly convoluted with re-rolls.
 
@@ -305,12 +307,12 @@ But if you don't care about the injury and armor breaks, you can probably simpli
 
 But it gets worse... if the defending player has Dodge and you don't have Tackle, the chance of getting a push is now `b3` instead of `b2`. This something you just need to remember, I guess?
 
-// REQUEST FOR COMMENTS
-Is it possible to come up with some unique syntax that will cover the most common case here? Maybe have a keyword `frenzy` that takes the block dice on the left side of the operator and recreates the "push,push" chance programmatically on the right? The next term could perhaps also be programmatically generated, unless the player knows they're in a Frenzy Trap or Frenzy Assist scenario.
+*// REQUEST FOR COMMENTS
+Is it possible to come up with some unique syntax that will cover the most common case here? Maybe have a keyword `frenzy` that takes the block dice on the left side of the operator and recreates the "push,push" chance programmatically on the right? The next term could perhaps also be programmatically generated, unless the player knows they're in a Frenzy Trap or Frenzy Assist scenario.*
 
-// Interactions with Side Step are also really problematic, but I think we'll just have to assume that the user will know where an opponent might want to bait him on a push.
+*// Interactions with Side Step are also really problematic, but I think we'll just have to assume that the user will know where an opponent might want to bait him on a push.*
 
-// I guess SAMBA and Dave's calculator just don't even bother with Frenzy, which is a shame.
+*// I guess SAMBA and Dave's calculator just don't even bother with Frenzy, which is a shame.*
 
 
 ## Special Rules
@@ -321,5 +323,5 @@ You can add `argue the call` or `atc` as a flag to a player's action sequence. I
 ## Bribe
 You can add `bribe` as a flag to a player's actions sequence. It should properly effect all subsequent Foul actions and Injury Rolls in that player's action sequence.
 
-// How do multiple bribes work? If I get snake-eyes twice on a foul, can I use two bribes?
+*// How do multiple bribes work? If I get snake-eyes twice on a foul, can I use two bribes?*
 
