@@ -1,4 +1,6 @@
-// THIS IS VERY MUCH A WORK-IN-PROGRESS
+* * *
+*// THIS IS VERY MUCH A WORK-IN-PROGRESS*
+* * *
 
 # Syntax Reference
 
