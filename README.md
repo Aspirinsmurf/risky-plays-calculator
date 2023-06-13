@@ -129,7 +129,7 @@ A block action consists of the number of block dice to roll, the keyword `block`
 
 The keyword `block` can be shortened to `b`, giving `2b4` as the short form for the example above.
 
-If there are no digits before the keyword, the parser defaults to a 1-die block. The inputs `b4` and `1b` are synonymous.
+If there are no digits before the keyword, the parser defaults to a 1-die block. The inputs `b4` and `1b4` are synonymous.
 
 Note that there's no separate Blitz action.
 
