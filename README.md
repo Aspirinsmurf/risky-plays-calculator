@@ -21,6 +21,14 @@ dodge 4+, sure hands 2+, 2+, 2block4;
 * * *
 *REQUEST FOR COMMENT: Should the terminology "action sequence" be ditched in favor of "action chain"?*
 * * *
+The output would be:
+
+|#|Description|
+|-|-|
+|1|Dodge 4+ w/dodge|
+|2|Pickup 2+ w/sure hands|
+|2|Unskilled 2+|
+|2|2-die block (4/6)|
 
 ### Multiple players
 To input actions from multiple players, replace the comma separator with a semicolon for every new player activated after the first:
