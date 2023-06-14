@@ -23,12 +23,12 @@ dodge 4+, sure hands 2+, 2+, 2block4;
 * * *
 The output would be:
 
-|#|Description|
-|-|-|
-|1|Dodge 4+ w/dodge|
-|2|Pickup 2+ w/sure hands|
-|2|Unskilled 2+|
-|2|2-die block (4/6)|
+|#| Action                              |%      |
+|-|-------------------------------------|-------|
+|1| 4+ Dodge w/dodge *3 in 4*           |**75,00%**|
+|1| 2+ Pickup w/sure hands *35 in 36)*  |**72,92%**|
+|1| 2+ Rush (8 in 9)                    |**64,81%**|
+|1| 2D Block [4 of 6] (8 in 9)          |**57,61%**|
 
 ### Multiple players
 To input actions from multiple players, replace the comma separator with a semicolon for every new player activated after the first:
