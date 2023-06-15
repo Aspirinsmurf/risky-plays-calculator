@@ -180,7 +180,7 @@ To determine the number of acceptable outcomes, add up the values of the desired
 
 <samp>Consider also that if something like `2block2+` is to be accepted as an alternative input, it would in all likelyhood have to be an *exception* to the rule that plus signs are optional, unless this would be the default and the length-of-set format non-default. 
 
-<samp>Also, should people be able to enter the desired results precisely, like `1b(DD, DS, BD)`? I don't really see the point in allowing that if we can solve the Block/Tackle issue elegantly, but I *can* see scenarios where counting up the values could actually be slower than just typing it in for inexperienced users.</samp>
+<samp>Also, should people be able to enter the desired results precisely, like `1b(DD, DS, BD)`? I don't really see the point in allowing that if we can solve the Block/Wrestle issue elegantly, but I *can* see scenarios where counting up the values could actually be slower than just typing it in for inexperienced users.</samp>
 
 ####  Negative dice blocks
 For blocks where the opponent chooses the result, add a minus sign `-` before the number of block dice, like `-2block` or `-2b`.
