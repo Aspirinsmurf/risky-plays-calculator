@@ -162,6 +162,8 @@ If there are no digits before the keyword, the it defaults to a 1-die block. The
 
 <samp>An empty argument like `2block3!` is an option. The format `2b3!` works well for short too, but I think I prefer `2bb3` to that option, since `2b3!!arg` isn't great without whitespace. The format `2bb3!arg` is marginally better. Also, for speed typing, the double b's are much more preferable.</samp>
 
+<samp>In the following, I will be usin the nicest-looking `2b2!` syntax.</samp>
+
 ####  Acceptable outcomes
 To determine the number of acceptable outcomes, add up the values of the desired results from this chart.
 
