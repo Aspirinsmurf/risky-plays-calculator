@@ -37,15 +37,6 @@ At it's most basic, input consists of a series of comma-delimited commands that 
 
 > In this example, one player tries dodging out with the Dodge skill on a 4+, picking up the ball with Sure Hands on a 2+, making a 2+ roll rush, blitzing with two block dice and getting either defender down, defender stumbles or a push.
 
-The output would like something like this:
-
-|#| Action |%|
-|-|--------|-|
-|1| 4+ dodge w/dodge | 3/4 |
-|1| 2+ pickup w/sure hands |35/36 |
-|1| 2+ rush  | 35/36 |
-|1| 2D block (4 of 6) |
-
 <samp>REQUEST FOR COMMENTS: Should the terminology "action sequence" be ditched in favor of "action chain" throughout?</samp>
 
 ### Additional players
